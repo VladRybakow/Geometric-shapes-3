@@ -94,7 +94,7 @@ namespace Geometric_shapes_3
             "Segment",
             "Rectangle",
             "Triangle"});
-            this.comboBox1.Location = new System.Drawing.Point(56, 134);
+            this.comboBox1.Location = new System.Drawing.Point(57, 143);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 2;
