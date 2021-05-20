@@ -33,7 +33,7 @@ namespace Geometric_shapes_3
             this.Load = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.BoxText = new System.Windows.Forms.ComboBox();
             this.Delete = new System.Windows.Forms.Button();
             this.Draw = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -50,7 +50,7 @@ namespace Geometric_shapes_3
             this.panel1.Controls.Add(this.Load);
             this.panel1.Controls.Add(this.Save);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.BoxText);
             this.panel1.Controls.Add(this.Delete);
             this.panel1.Controls.Add(this.Draw);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -86,18 +86,18 @@ namespace Geometric_shapes_3
             this.label1.TabIndex = 3;
             this.label1.Text = "Select a shape";
             // 
-            // comboBox1
+            // BoxText
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.BoxText.FormattingEnabled = true;
+            this.BoxText.Items.AddRange(new object[] {
             "Circle",
             "Segment",
             "Rectangle",
             "Triangle"});
-            this.comboBox1.Location = new System.Drawing.Point(57, 143);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
+            this.BoxText.Location = new System.Drawing.Point(57, 143);
+            this.BoxText.Name = "BoxText";
+            this.BoxText.Size = new System.Drawing.Size(121, 21);
+            this.BoxText.TabIndex = 2;
             // 
             // Delete
             // 
@@ -117,6 +117,7 @@ namespace Geometric_shapes_3
             this.Draw.TabIndex = 0;
             this.Draw.Text = "Draw";
             this.Draw.UseVisualStyleBackColor = true;
+            this.Draw.Click += new System.EventHandler(this.Draw_Click);
             // 
             // panel2
             // 
@@ -147,12 +148,14 @@ namespace Geometric_shapes_3
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(105, 71);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(465, 309);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Form1
             // 
@@ -179,7 +182,7 @@ namespace Geometric_shapes_3
         private System.Windows.Forms.Button Load;
         private System.Windows.Forms.Button Save;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox BoxText;
         private System.Windows.Forms.Button Delete;
         private System.Windows.Forms.Button Draw;
         private System.Windows.Forms.Panel panel2;
