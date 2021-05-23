@@ -29,6 +29,7 @@ namespace Geometric_shapes_3
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.Load = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
@@ -36,12 +37,11 @@ namespace Geometric_shapes_3
             this.BoxText = new System.Windows.Forms.ComboBox();
             this.Delete = new System.Windows.Forms.Button();
             this.Draw = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Panel = new System.Windows.Forms.PictureBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Panel)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -54,9 +54,9 @@ namespace Geometric_shapes_3
             this.panel1.Controls.Add(this.Delete);
             this.panel1.Controls.Add(this.Draw);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(570, 0);
+            this.panel1.Location = new System.Drawing.Point(667, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 450);
+            this.panel1.Size = new System.Drawing.Size(230, 564);
             this.panel1.TabIndex = 0;
             // 
             // Load
@@ -67,6 +67,7 @@ namespace Geometric_shapes_3
             this.Load.TabIndex = 5;
             this.Load.Text = "Load";
             this.Load.UseVisualStyleBackColor = true;
+            this.Load.Click += new System.EventHandler(this.Load_Click);
             // 
             // Save
             // 
@@ -76,6 +77,7 @@ namespace Geometric_shapes_3
             this.Save.TabIndex = 4;
             this.Save.Text = "Save";
             this.Save.UseVisualStyleBackColor = true;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // label1
             // 
@@ -119,59 +121,34 @@ namespace Geometric_shapes_3
             this.Draw.UseVisualStyleBackColor = true;
             this.Draw.Click += new System.EventHandler(this.Draw_Click);
             // 
-            // panel2
+            // Panel
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(570, 71);
-            this.panel2.TabIndex = 1;
+            this.Panel.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel.ErrorImage = ((System.Drawing.Image)(resources.GetObject("Panel.ErrorImage")));
+            this.Panel.InitialImage = null;
+            this.Panel.Location = new System.Drawing.Point(0, 0);
+            this.Panel.Name = "Panel";
+            this.Panel.Size = new System.Drawing.Size(667, 564);
+            this.Panel.TabIndex = 4;
+            this.Panel.TabStop = false;
             // 
-            // panel3
+            // openFileDialog1
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 380);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(570, 70);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 71);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(105, 309);
-            this.panel4.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(105, 71);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(465, 309);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(897, 564);
+            this.Controls.Add(this.Panel);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Panel)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -185,10 +162,9 @@ namespace Geometric_shapes_3
         private System.Windows.Forms.ComboBox BoxText;
         private System.Windows.Forms.Button Delete;
         private System.Windows.Forms.Button Draw;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Panel;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

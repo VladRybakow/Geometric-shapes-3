@@ -6,12 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Geometric_shapes_3
 {
     public partial class Form1 : Form
     {
+        private Bitmap bm;
+        private Graphics paper;
         public Form1()
         {
             InitializeComponent();
@@ -19,13 +22,13 @@ namespace Geometric_shapes_3
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var graphics = pictureBox1.CreateGraphics();
+           var graphics = Panel.CreateGraphics();
             graphics.Clear(Color.White);
         }
 
         private void Draw_Click(object sender, EventArgs e)
         {
-            var graphics = pictureBox1.CreateGraphics();
+            var graphics = Panel.CreateGraphics();
             Pen pen = new Pen(Color.Black, 5);
             string box = BoxText.Text;
 
@@ -56,9 +59,43 @@ namespace Geometric_shapes_3
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Save_Click(object sender, EventArgs e)
         {
 
+            if (Panel.Image != null)
+            {  
+                var SFD = new SaveFileDialog();
+                SFD.Filter = "(*.BMP;)|*.BMP|(*.JPG)|*.JPG|(*.PNG)|*.PNG|All Files(*.*)|*.*";
+                
+                if (SFD.ShowDialog() == DialogResult.OK)
+                {   
+                    Panel.Image.Save(SFD.FileName);
+                }
+
+                else
+                {
+                    MessageBox.Show("Ошибка");
+                }
+            }
+        }
+
+        private void Load_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG|All Files (*.*)|*.*";
+
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    Panel.Image = new Bitmap(ofd.FileName);
+                }
+                catch
+                {
+                    MessageBox.Show("Невозможно отркрыть файл или фото");
+                }
+            }
         }
     }
 }
